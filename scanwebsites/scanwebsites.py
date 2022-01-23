@@ -20,7 +20,7 @@ def send_email():
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login('ScannerDinHjemmeside@gmail.com', '?d5!d&&$XydM4#C$')
+    server.login('ScannerDinHjemmeside@gmail.com', 'PASSWORD HERE!')
     server.send_message(msg)
     server.quit()
 
