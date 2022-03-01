@@ -1,3 +1,9 @@
+# Jeppe Skovby Bjørn
+#
+# Created using python version 3.9.9
+# Packages needed: pyadio & SpeechRecognition
+# https://www.thepythoncode.com/article/using-speech-recognition-to-convert-speech-to-text-python
+
 import speech_recognition as sr
 
 r = sr.Recognizer()
