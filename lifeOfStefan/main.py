@@ -1,9 +1,13 @@
-from dayCycle import DayCycle
+import time
 
-def func_name():
-    i = DayCycle()
-    print(i.get_int())
+from dayCycle import DayCycle
 
 if __name__ == "__main__":
     print("Hello World")
-    func_name()
+
+i = DayCycle(5)
+
+i.increase_time()
+i.increase_time()
+
+print(i.time_of_day())

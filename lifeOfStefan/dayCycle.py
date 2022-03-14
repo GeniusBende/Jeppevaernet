@@ -1,7 +1,18 @@
 class DayCycle:
-    my_int = 5
+    time = 0
 
-    def get_int(self):
-        print("Test")
-        return self.my_int
+    def __init__(self, time):
+        if (time < 0 or time > 23):
+            self.time = 0
+        else:
+            self.time = time
+
+    def time_of_day(self):
+        return self.time
+
+    def increase_time(self):
+        if (self.time == 23):
+            self.time = 0
+        else:
+            self.time += 1
 
