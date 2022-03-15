@@ -1,14 +1,14 @@
-import time
-
-from dayCycle import DayCycle
+from environment.environment import Environment
+from environment.dayCycle import DayCycle
+from stefan.stefan import Stefan
+from stefan.states import States
 
 def main():
-    i = DayCycle(5)
+    person = Stefan(10, States.AWAKE)
+    day = DayCycle(8)
+    environment = Environment(person, day)
 
-    i.increase_time()
-    i.increase_time()
-
-    print(i.time_of_day())
+    environment.start()
 
 
 if __name__ == "__main__":
