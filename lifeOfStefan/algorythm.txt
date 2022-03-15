@@ -1,0 +1,20 @@
+if (Stefan.isAwake()) {
+  Stefan.makeCoffee();
+  Stefan.intakeCoffee();
+  Stefan.masturbateFuriously
+} else {
+  if (Stefan.needsToGetUpForSomething) {
+    Stefan.setAlarm(Console.ReadLine());
+  }
+
+  while(!Stefan.isAwake()) {
+    Stefan.sleep();
+    if (Stefan.alarmGoesOf()) {
+      Stefan.setState(awake) 
+    }
+  }
+}
+
+if (Stefan.isTired) {
+  Stefan.setState(masturbateUntilSleeping)
+}
