@@ -50,7 +50,12 @@ def getDayAndTime():
 
 def setApp():
     global _PROCESS_NAME
-    _PROCESS_NAME = pyautogui.prompt('Which application do you wish to track? Default: Plex Media Server')
+    userInput = pyautogui.prompt('Which application do you wish to track? Default: Plex Media Server')
+
+    if (userInput is None):
+        pass
+    else:
+        _PROCESS_NAME = userInput
 
 
 def setTime():
