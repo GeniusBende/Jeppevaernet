@@ -74,13 +74,13 @@ def quit():
     global _SPY
     _SPY = False
 
-    icon.stop()
+    programSysTray.stop()
     
 
 
-menu=(item('Start', start), item('Stop', stop), item('Quit', quit))
-icon=pystray.Icon("name", _IMAGE, "Spying", menu)
-icon.run()
+menu = (item('Start', start), item('Stop', stop), item('Quit', quit))
+programSysTray = pystray.Icon("name", _IMAGE, "Spying", menu)
+programSysTray.run()
 
 
 
