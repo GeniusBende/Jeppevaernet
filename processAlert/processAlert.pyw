@@ -48,6 +48,10 @@ def getDayAndTime():
 
     return dt_string
 
+def setApp():
+    global _PROCESS_NAME
+    _PROCESS_NAME = pyautogui.prompt('Which application do you wish to track? Default: Plex Media Server')
+
 
 def setTime():
     global _CHECKDELAY
@@ -57,7 +61,7 @@ def setTime():
 
         if userInput is None:
             break
-        
+
         try:
             _CHECKDELAY = int(userInput)
             break
@@ -86,12 +90,13 @@ def start():
     global _SPY, _MY_THREAD
     _SPY = True
 
-    if (_MY_THREAD.is_alive()):
-        pass
-    else:
+    if (_MY_THREAD is None or not _MY_THREAD.is_alive()):
         _MY_THREAD = threading.Thread(target=mainLoop)
         _MY_THREAD.daemon = True
         _MY_THREAD.start()
+    else:
+        pass
+        
 
 def quit():
     global _SPY
@@ -99,7 +104,7 @@ def quit():
 
     programSysTray.stop()
     
-menu = (item('Start', start), item('Stop', stop), item('Set delay', setTime), item('Quit', quit))
+menu = (item('Start', start), item('Stop', stop), item('Set Application', setApp), item('Set Delay', setTime), item('Quit', quit))
 
 programSysTray = pystray.Icon("name", _IMAGE, "Spying", menu)
 programSysTray.run()
