@@ -7,6 +7,9 @@ import psutil
 import time
 import pystray
 import threading
+import pyautogui
+
+from tkinter import *
 from datetime import datetime
 from pystray import MenuItem as item
 from PIL import Image
@@ -15,6 +18,8 @@ from PIL import Image
 _PROCESS_NAME = "Plex Media Server"
 _IMAGE = Image.open("assets/icon.png")
 _SPY = False
+_CHECKDELAY = 1
+_MY_THREAD = None
 
 '''
 Check if there is any running process that contains the given name processName.
@@ -44,6 +49,20 @@ def getDayAndTime():
     return dt_string
 
 
+def setTime():
+    global _CHECKDELAY
+
+    while True:
+        userInput = pyautogui.prompt('Please insert the amount of delay in seconds')
+
+        if userInput is None:
+            break
+        
+        try:
+            _CHECKDELAY = int(userInput)
+            break
+        except ValueError:
+            pyautogui.alert('Input was not a valid number', "Dumbass")
 
 def alert(value):
     if value:
@@ -57,18 +76,22 @@ def mainLoop():
 
         alert(value)
 
-        time.sleep(1)
+        time.sleep(_CHECKDELAY)
 
 def stop():
     global _SPY
     _SPY = False
 
 def start():
-    global _SPY
+    global _SPY, _MY_THREAD
     _SPY = True
 
-    x = threading.Thread(target=mainLoop)
-    x.start()
+    if (_MY_THREAD.is_alive()):
+        pass
+    else:
+        _MY_THREAD = threading.Thread(target=mainLoop)
+        _MY_THREAD.daemon = True
+        _MY_THREAD.start()
 
 def quit():
     global _SPY
@@ -76,12 +99,7 @@ def quit():
 
     programSysTray.stop()
     
+menu = (item('Start', start), item('Stop', stop), item('Set delay', setTime), item('Quit', quit))
 
-
-menu = (item('Start', start), item('Stop', stop), item('Quit', quit))
 programSysTray = pystray.Icon("name", _IMAGE, "Spying", menu)
 programSysTray.run()
-
-
-
-
