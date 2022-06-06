@@ -7,9 +7,10 @@ import argparse
 def print_args(args):
     print()
     print('Calculating using the following values:')
-    print('AM percentage:\t\t' + '%4.0f' % (args.am * 100) + ' %')
-    print('Tax:\t\t\t' + '%4.0f' % (args.tax * 100) + ' %')
-    print('Personal allowance:\t' + '%6.2f' % args.pa)
+    print('AM percentage:\t\t' + '%5.0f' % (args.am * 100) + ' %')
+    print('Tax:\t\t\t' + '%5.0f' % (args.tax * 100) + ' %')
+    print('Personal allowance:\t' + '%8.2f' % args.pa)
+    print('Income:\t\t\t' + '%8.2f' % args.income)
     print()
 
 def calculate(args):
