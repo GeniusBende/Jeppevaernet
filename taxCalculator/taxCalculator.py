@@ -29,7 +29,7 @@ def print_results(args):
     print()
     print('Payment:\t\t' + '%8.2f' % args.paid_out)
     print()
-    input('Pres enter to terminate...')
+    input('Press "enter" to terminate...')
 
 def main():
     argparser = argparse.ArgumentParser(
@@ -43,9 +43,9 @@ def main():
     )
     argparser.add_argument(
         '-t', '--tax',
-        default=0.38,
+        default=0.39,
         type=float,
-        help='The tax percentage (default: 0.38 -> 38)'
+        help='The tax percentage (default: 0.39 -> 39)'
     )
     argparser.add_argument(
         '--pa',
